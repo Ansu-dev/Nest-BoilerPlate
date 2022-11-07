@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "Nest-Practice",
+            "script": "dist/main.js",
+            "instances": 0,
+            "exec_mode": "cluster",
+            "wait_ready": true,
+            "output": "~/logs/pm2/console.log",
+            "error": "~/logs/pm2/onsoleError.log"
+        }
+    ]
+}

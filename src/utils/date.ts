@@ -1,5 +1,3 @@
-
-
 export const currentDate = (digit: number) => {
     const date = new Date()
     const year = date.getFullYear()

@@ -10,15 +10,16 @@ export class TypeOrmConfigServcie implements TypeOrmOptionsFactory {
     ) { }
 
     createTypeOrmOptions(): TypeOrmModuleOptions {
+        console.log(this.configService.get('DB_DATABASE'))
         return {
             type: 'mysql',
             host: this.configService.get('DB_HOST'),
             username: this.configService.get('DB_USERNAME'),
             password: this.configService.get('DB_PASSWORD'),
-            port: 3306,
+            port: Number(this.configService.get('DB_PORT')),
             database: this.configService.get('DB_DATABASE'),
             entities: [__dirname + '/models/*.entity{.ts,.js}'],
-            synchronize: true,
+            synchronize: JSON.parse(this.configService.get('DB_SYNC')),
             // autoLoadEntities: true,
         }
     }

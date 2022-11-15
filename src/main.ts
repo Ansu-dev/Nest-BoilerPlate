@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { createWriteStream } from 'fs'
-import { ValidationPipe } from '@nestjs/common'
+import { Logger, ValidationPipe } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import morgan from 'morgan'
 
@@ -37,10 +37,12 @@ async function bootstrap() {
   app.setGlobalPrefix('v1/api')
   app.useGlobalPipes(new ValidationPipe())
   //로깅 미들웨어
-  app.use(morgan('tiny', { stream: logStream }))
+  // app.use(morgan('tiny', { stream: logStream }))
   //서버 포트
   const port: number = Number(process.env.SERVER_PORT)
-  await app.listen(port);
+  await app.listen(port, () => {
+    Logger.log(`SERVER - ${port}PORT CONNECTED`)
+  });
 }
 bootstrap();
 

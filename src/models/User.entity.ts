@@ -1,5 +1,4 @@
-import dayjs from "dayjs";
-import { generateRandomCode } from "src/utils/date";
+import { currentDateFormat, generateRandomCode } from "src/utils/date";
 import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
 
 
@@ -47,10 +46,13 @@ export class User {
     @Column()
     updatedAt: Date
 
+    constructor(partial: Partial<User>) {
+        Object.assign(this, partial);
+    }
+
     @BeforeInsert()
     createId(): void {
-        const date = dayjs().format('YYYYMMDD')
-        this.id = Number(`${date}${generateRandomCode(3)}`)
+        this.id = Number(`${currentDateFormat()}${generateRandomCode(3)}`)
     }
 
     @BeforeInsert()

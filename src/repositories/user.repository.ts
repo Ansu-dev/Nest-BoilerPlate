@@ -15,6 +15,10 @@ export class UserRepository {
     }
 
     async findById(id: number): Promise<User> {
-        return await this.user.findOneBy({ id: id })
+        return await this.user.createQueryBuilder('u')
+            .innerJoinAndSelect('u.setting', 'us')
+            .leftJoinAndSelect('u.account', 'ua')
+            .where('u.id = :id', { id: id })
+            .getOne()
     }
 }

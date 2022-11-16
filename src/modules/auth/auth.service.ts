@@ -21,7 +21,6 @@ export class AuthService {
             let status: number = 0
             let resultCode: number = 0
             let data: any = null
-            console.log(user)
             if (user) {
                 if (user.accountStatus === AccountStatus.enable) {
                     const hashPassword = GenDigestPwd(password)

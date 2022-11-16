@@ -11,8 +11,6 @@ export class JwtModule {
             module: JwtModule,
             providers: [
                 JwtService,
-                AccessTokenStrategy,
-                RefreshTokenStrategy
             ],
             exports: [JwtService],
         }

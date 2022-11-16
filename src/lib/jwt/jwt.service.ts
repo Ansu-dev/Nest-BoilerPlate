@@ -13,8 +13,4 @@ export class JwtService {
         const refreshToken: string = jwt.sign({ userId: userId }, this.jwtSecret, { expiresIn: '7d' })
         return { accessToken, refreshToken }
     }
-
-    verifyToken(token: string) {
-        return jwt.verify(token, this.jwtSecret)
-    }
 }

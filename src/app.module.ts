@@ -4,7 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmConfigServcie } from './config/database/config.service';
+import { TypeOrmConfigServcie } from './database/config.service';
 
 
 @Module({

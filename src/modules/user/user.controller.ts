@@ -20,8 +20,6 @@ export class UserController {
         return this.userService.emailSignUp(files, body)
     }
 
-
-
     @UseGuards(AccessTokenGuard)
     @Get('info')
     async getInfo(@Req() req: Request) {

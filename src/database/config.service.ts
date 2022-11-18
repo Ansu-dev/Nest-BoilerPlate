@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
+import { CustomLogger } from "src/orm-logger/typeorm.log";
 
 
 @Injectable()
@@ -14,6 +15,8 @@ export class TypeOrmConfigServcie implements TypeOrmOptionsFactory {
             database: process.env.DB_NAME,
             entities: ['dist/**/*.entity.{ts,js}'],
             synchronize: JSON.parse(process.env.DB_SYNC),
+            logging: true,
+            logger: new CustomLogger(),
         }
     }
 }

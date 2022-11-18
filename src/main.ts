@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import { createWriteStream } from 'fs'
 import { Logger, ValidationPipe } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import morgan from 'morgan'
 
 
 const logStream = createWriteStream('logs/api.log', {

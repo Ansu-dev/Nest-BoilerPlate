@@ -13,12 +13,13 @@ export class PointRepository {
 
 
     async create(body: PointCreateDto): Promise<Point> {
-        return this.pointRepository.create({
+        const point = this.pointRepository.create({
             point: body.point,
             description: body.description,
             giveMethod: body.giveMethod,
             plus: body.plus,
             user: body.user
         })
+        return this.pointRepository.save(point)
     }
 }

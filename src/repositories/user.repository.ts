@@ -4,7 +4,6 @@ import { Currency } from "src/models/enum/enum";
 import { User } from "src/models/User.entity";
 import { UserAccount } from "src/models/UserAccount.entity";
 import { UserGroupUser } from "src/models/UserGroup-User.entity";
-import { UserGroup } from "src/models/UserGroup.entity";
 import { UserMail } from "src/models/UserMail.entity";
 import { UserSetting } from "src/models/UserSetting.entity";
 import { RegistUserReqDto } from "src/modules/user/dto/req/create.dto";
@@ -19,8 +18,8 @@ export class UserRepository {
         private user: Repository<User>,
     ) { }
 
-    async insertUser(body: RegistUserReqDto): Promise<any> {
-        const global: boolean = JSON.parse(body.isGlobal)
+    async create(body: RegistUserReqDto): Promise<any> {
+        const isGlobal: boolean = JSON.parse(body.isGlobal)
         const user = this.user.create()
         user.email = body.email
         user.password = GenDigestPwd(body.password)
@@ -29,9 +28,10 @@ export class UserRepository {
         user.birth = body.birth
         user.gender = body.gender
         user.userCode = generateRandomString()
-        user.myPoint = global ? 2 : 2000
-        user.currency = global ? Currency.USD : Currency.KRW
+        user.myPoint = isGlobal ? 2 : 2000
+        user.currency = isGlobal ? Currency.USD : Currency.KRW
         user.nationality = body.nationality
+        user.profile = body.profile ? cloudfrontPath(body.profile) : null
         user.setting = new UserSetting({
             agreeReceiveEmail: body.agreeReceiveEmail,
             agreeReceiveText: body.agreeReceiveText,
@@ -46,7 +46,7 @@ export class UserRepository {
             accountId: ''
         }))
         user.userGroupUser.push(new UserGroupUser({
-            userGroup: new UserGroup({ id: 1 })
+            userGroupId: isGlobal ? 2 : 1
         }))
         await this.user.save(user)
         return user
@@ -76,3 +76,7 @@ export class UserRepository {
         return await this.user.save(user)
     }
 }
+function cloudfrontPath(profile: string): string {
+    throw new Error("Function not implemented.");
+}
+

@@ -42,6 +42,9 @@ export class RegistUserReqDto {
 
     @ApiProperty()
     isGlobal: string
+
+    @ApiProperty()
+    profile?: string
 }
 
 export class PointCreateDto {

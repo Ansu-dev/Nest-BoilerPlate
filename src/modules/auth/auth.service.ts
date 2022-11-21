@@ -25,9 +25,11 @@ export class AuthService {
                 if (user.accountStatus === AccountStatus.enable) {
                     const hashPassword = GenDigestPwd(password)
                     if (user.password === hashPassword) {
+                        data = this.jwtServcie.getToken(user.id)
+                        user.lastLoginAt = new Date()
+                        this.userRepository.save(user)
                         status = 200
                         resultCode = 1
-                        data = this.jwtServcie.getToken(user.id)
                     } else {
                         status = 202
                         resultCode = 1002 //비밀번호 틀림

@@ -32,7 +32,7 @@ async function bootstrap() {
   app.setGlobalPrefix('v1/api')
   app.useGlobalPipes(new ValidationPipe())
 
-  //Global Loggin Interceptor
+  //Global Logging Interceptor
   app.useGlobalInterceptors(new LoggingInterceptor())
 
   //Global ValidationPipe
@@ -43,7 +43,7 @@ async function bootstrap() {
           status: 400,
           data: {
             resultCode: -1,
-            data: null
+            data: err[0].constraints
           }
         })
       }

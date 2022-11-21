@@ -1,19 +1,23 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Logger, Inject } from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Logger } from '@nestjs/common';
+import { createWriteStream } from 'fs';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { formatDate } from 'src/utils/date';
+
+const logStream = createWriteStream('logs/api.log', { flags: 'a' })
+
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
-    constructor(private logger: Logger) { }
-
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-        const { method, url, body } = context.getArgByIndex(0);
-        this.logger.log(`Request to ${method} ${url}`);
+        const { method, url } = context.getArgByIndex(0);
+        Logger.log(`[${formatDate()}] Request to ${method} ${url}`);
+        logStream.write(`[${formatDate()}] Request to ${method} ${url}`)
 
         return next
             .handle()
             .pipe(
-                tap(data => this.logger.log(`Response from ${method} ${url} \n response: ${JSON.stringify(data)}`))
+                tap(data => logStream.write(`[${formatDate()}] Response from ${method} ${url} \n response: ${JSON.stringify(data)}`))
             );
     }
 }

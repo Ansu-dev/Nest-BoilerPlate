@@ -1,13 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { createWriteStream } from 'fs'
 import { Logger, ValidationPipe } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-
-
-const logStream = createWriteStream('logs/api.log', {
-  flags: 'a', //appren
-})
+import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 
 async function bootstrap() {
@@ -35,8 +30,10 @@ async function bootstrap() {
   //서버 루트 url
   app.setGlobalPrefix('v1/api')
   app.useGlobalPipes(new ValidationPipe())
-  //로깅 미들웨어
-  // app.use(morgan('tiny', { stream: logStream }))
+  
+  //글로벌 로깅 인터셉터
+  app.useGlobalInterceptors(new LoggingInterceptor())
+
   //서버 포트
   const port: number = Number(process.env.SERVER_PORT)
   await app.listen(port, () => {

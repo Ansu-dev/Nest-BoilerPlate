@@ -14,10 +14,12 @@ RUN yarn build
 #6
 FROM node:16-alpine
 #7
-WORKDIR /app
+EXPOSE 3000
 #8
-ENV NODE_ENV dev
+WORKDIR /app
 #9
-COPY --from=builder /app ./
+ENV NODE_ENV dev
 #10
+COPY --from=builder /app ./
+#11
 CMD ["yarn","start:dev"]

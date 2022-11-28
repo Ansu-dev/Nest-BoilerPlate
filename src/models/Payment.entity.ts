@@ -1,6 +1,6 @@
 import { Order } from './Order.entity';
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Currency, PaymentMethod, PaymentStatus, PaymentType } from './enum/enum';
+import { Currency, PaymentStatus } from './enum/enum';
 
 
 

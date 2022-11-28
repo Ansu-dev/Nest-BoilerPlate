@@ -4,12 +4,11 @@ import { ProductReview } from "./ProductReview.entity";
 import { UserSetting } from './UserSetting.entity';
 import { UserAccount } from './UserAccount.entity';
 import { UserCart } from './UserCart.entity';
-import { UserSupport } from './UserSupport.entity';
 import { Point } from './Point.entity';
 import { UserCoupon } from './UserCoupon.entity';
 import { ProductLiked } from './ProductLiked.entity';
 import { SellerLiked } from './SellerLiked.entity';
-import { AccountStatus, Currency, Gender } from './enum/enum';
+import { AccountStatus, Currency } from './enum/enum';
 import { UserGroupUser } from './UserGroup-User.entity';
 import { UserMail } from './UserMail.entity';
 
@@ -112,9 +111,6 @@ export class User {
 
     @OneToMany(() => UserCart, (cart) => cart.user, { cascade: true })
     cart: UserCart[]
-
-    @OneToMany(() => UserSupport, (support) => support.user, { cascade: true })
-    userSupport: UserSupport[]
 
     @OneToMany(() => Point, (point) => point.user, { cascade: true })
     usePoint: Point[]

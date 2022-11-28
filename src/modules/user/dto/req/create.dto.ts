@@ -1,6 +1,6 @@
 import { Coupon } from './../../../../models/Coupon.entity';
 import { ApiProperty } from "@nestjs/swagger"
-import { AccountType, Gender } from "src/models/enum/enum"
+import { AccountType } from "src/models/enum/enum"
 import { User } from "src/models/User.entity"
 
 export class RegistUserReqDto {
@@ -13,8 +13,8 @@ export class RegistUserReqDto {
     @ApiProperty()
     name: string
 
-    @ApiProperty({ type: 'enum', enum: Gender })
-    gender: Gender
+    @ApiProperty()
+    gender: string
 
     @ApiProperty()
     phone: string

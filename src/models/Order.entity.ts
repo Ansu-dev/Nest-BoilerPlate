@@ -1,10 +1,9 @@
-import { Currency, Flatform, OrderDevice } from './enum/enum';
+import { Currency, Platform, OrderDevice } from './enum/enum';
 import { BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { OrderProduct } from "./OrderProduct.entity";
 import { Payment } from "./Payment.entity";
 import { generateRandomCode } from 'src/utils/date';
 import dayjs from 'dayjs';
-import { Point } from './Point.entity';
 
 
 @Entity({ name: 'Orders' })
@@ -39,8 +38,8 @@ export class Order {
     @Column({ type: 'enum', enum: OrderDevice })
     device: OrderDevice
 
-    @Column({ type: 'enum', enum: Flatform, default: Flatform.ko })
-    platform: Flatform
+    @Column({ type: 'enum', enum: Platform, default: Platform.ko })
+    platform: Platform
 
     @Column({ default: 0 })
     couponId: number

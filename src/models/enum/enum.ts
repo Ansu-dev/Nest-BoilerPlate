@@ -1,15 +1,14 @@
 export enum MasterAuth {
-    master = '최종관리자',
-    manager = '관리자',
+    master = 'master',
+    manager = 'manager',
 }
 
 export enum Department {
-    dev = '개발팀',
-    design = '디자인팀',
-    operation = '오퍼레이션팀',
-    growth = '그로스팀',
-    global = '글로벌팀',
-    owner = '회사 운영팀'
+    dev = 'dev',
+    design = 'design',
+    operation = 'operation',
+    growth = 'growth',
+    owner = 'corporate'
 }
 
 export enum Currency {
@@ -28,7 +27,7 @@ export enum DiscountType {
     amount = 'amount'
 }
 
-export enum Flatform {
+export enum Platform {
     ko = 'ko',
     en = 'en'
 }
@@ -75,11 +74,6 @@ export enum ProductStatus {
     modified = '수정 대기',
 }
 
-export enum ProductGroupType {
-    default = "default",
-    pick = "MD's Pick"
-}
-
 export enum SellerStatus {
     registered = '승인 대기',
     confirmed = '승인 완료',
@@ -89,10 +83,10 @@ export enum SellerStatus {
 }
 
 export enum SellerNoticeType {
-    notice = '기타',
-    inspection = '정기점검',
-    report = '트렌드 리포트',
-    plan = '기획전',
+    etc = 'etc',
+    inspection = 'periodic inspection',
+    report = 'report',
+    plan = 'plan',
 }
 
 export enum BusinessOption {
@@ -130,11 +124,6 @@ export enum TaxStatus {
     unissued = 'unissued',
     issuing = 'issuing',
     issued = 'issued'
-}
-
-export enum Gender {
-    male = "male",
-    female = "female"
 }
 
 export enum AccountStatus {

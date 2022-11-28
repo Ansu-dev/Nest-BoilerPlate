@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, ManyToOne, PrimaryColumn } from "typeorm";
 import { Seller } from "./Seller.entity";
 import { User } from "./User.entity";
 import 'reflect-metadata'

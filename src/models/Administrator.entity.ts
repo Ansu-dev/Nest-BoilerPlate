@@ -24,7 +24,7 @@ export class Administrator {
     phone: string
 
     @Column({ type: 'enum', enum: Department })
-    department: string
+    department: Department
 
     @Column({ length: 2000, nullable: true })
     memo: string

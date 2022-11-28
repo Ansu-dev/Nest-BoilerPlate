@@ -1,6 +1,6 @@
 import { Product } from './Product.entity';
 import dayjs from 'dayjs';
-import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Order } from "./Order.entity";
 import { generateRandomCode } from 'src/utils/date';
 import { OrderStatus } from './enum/enum';

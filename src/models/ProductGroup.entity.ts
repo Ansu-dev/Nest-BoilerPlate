@@ -1,7 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Category } from "./Category.entity";
 import { Coupon } from "./Coupon.entity";
-import { ProductGroupType } from './enum/enum';
 import { ProductGroupProduct } from './ProductGroup-Product.entity';
 
 

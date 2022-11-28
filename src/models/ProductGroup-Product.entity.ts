@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, ManyToOne, PrimaryColumn } from "typeorm";
 import { Product } from "./Product.entity";
 import { ProductGroup } from './ProductGroup.entity';
 import 'reflect-metadata'

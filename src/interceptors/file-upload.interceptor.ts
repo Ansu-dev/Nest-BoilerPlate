@@ -8,7 +8,7 @@ export const fileUpload = {
         s3: new S3({
             credentials: awsConfig
         }),
-        bucket: 'webudding-dev',
+        bucket: '',
         contentType: (_, file, cb) => {
             let contentType = 'image/png'
             cb(null, contentType)
@@ -20,13 +20,7 @@ export const fileUpload = {
         key: (_, file, cb) => {
             let filename = s3FileName(file)
             let location = ''
-            if (file.fieldname === 'profile') {
-                location = `public/user/info/${filename}`
-            } else if (file.fieldname === 'review') {
-                location = `public/product/review/${filename}`
-            } else if (file.fieldname === 'web' || file.fieldname === 'mobile') {
-                location = `public/product/group/${filename}`
-            }
+            // * s3 파일 public / private 예외처리
             cb(null, location)
         }
     }),

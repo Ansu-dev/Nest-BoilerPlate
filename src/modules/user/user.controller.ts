@@ -19,10 +19,4 @@ export class UserController {
     async emailSignUp(@UploadedFiles() files: File[], @Body() body: RegistUserReqDto) {
         return this.userService.emailSignUp(files, body)
     }
-
-    @UseGuards(AccessTokenGuard)
-    @Get('info')
-    async getInfo(@Req() req: Request) {
-        return this.userService.getInfo(req.user['userId'])
-    }
 }
